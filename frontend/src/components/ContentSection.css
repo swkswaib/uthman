@@ -1,0 +1,474 @@
+.content-section {
+  flex: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  transition: var(--transition);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-section.sidebar-open {
+  transform: translateX(280px);
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.content-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+}
+
+.content-header p {
+  color: var(--text-light);
+  font-size: 1.125rem;
+}
+
+.new-project-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.new-project-btn:hover {
+  background-color: var(--secondary);
+  transform: translateY(-1px);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.stat-content h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stat-content p {
+  color: var(--text-light);
+  font-size: 0.875rem;
+}
+
+.stat-change {
+  margin-left: auto;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.stat-change.positive {
+  background-color: var(--green-light);
+  color: var(--green);
+}
+
+.stat-change.negative {
+  background-color: var(--red-light);
+  color: var(--red);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.view-all-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.view-all-btn:hover {
+  background-color: var(--primary-light);
+}
+
+.projects-table-container {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: var(--spacing-lg);
+}
+
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projects-table th {
+  text-align: left;
+  padding: var(--spacing-md);
+  background-color: var(--bg);
+  font-weight: 600;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+}
+
+.projects-table td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+}
+
+.projects-table tr:last-child td {
+  border-bottom: none;
+}
+
+.project-name {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: 500;
+}
+
+.project-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background-color: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-width: 40px;
+}
+
+.team-avatars {
+  display: flex;
+}
+
+.team-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -8px;
+}
+
+.team-avatar:first-child {
+  margin-left: 0;
+}
+
+.deadline {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.deadline.urgent {
+  color: var(--red);
+  font-weight: 500;
+}
+
+.days-left {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background-color: var(--border);
+}
+
+.action-btn.edit:hover {
+  color: var(--primary);
+}
+
+.action-btn.delete:hover {
+  color: var(--red);
+}
+
+.bottom-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.chart-container,
+.activity-container {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.time-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: white;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.chart-placeholder {
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) 0;
+}
+
+.chart-bar {
+  flex: 1;
+  background-color: var(--primary);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease;
+  min-height: 20px;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.activity-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.activity-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.activity-content p {
+  margin-bottom: 4px;
+  font-size: 0.875rem;
+}
+
+.activity-content small {
+  color: var(--text-light);
+  font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .bottom-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    padding: var(--spacing-md);
+  }
+  
+  .content-section.sidebar-open {
+    transform: none;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .projects-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .content-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .new-project-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .stat-change {
+    margin-left: 0;
+  }
+  
+  .projects-table th:nth-child(3),
+  .projects-table td:nth-child(3),
+  .projects-table th:nth-child(5),
+  .projects-table td:nth-child(5) {
+    display: none;
+  }
+}
+
+/* School-specific styles */
+.student-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.class-badge {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.grade-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.grade-badge.green {
+  background-color: var(--green-light);
+  color: var(--green);
+}
+
+.grade-badge.blue {
+  background-color: var(--blue-light);
+  color: var(--blue);
+}
+
+.grade-badge.orange {
+  background-color: var(--orange-light);
+  color: var(--orange);
+}
+
+.stat-change.neutral {
+  background-color: var(--border);
+  color: var(--text-light);
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 var(--spacing-sm);
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.chart-bar:hover {
+  opacity: 0.85;
+  transform: scaleY(1.02);
+  transform-origin: bottom;
+}

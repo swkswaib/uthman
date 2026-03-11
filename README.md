@@ -97,3 +97,25 @@ npm start
 ## Customization
 
 Colors and spacing can be customized in [src/App.css](src/App.css) using CSS custom properties:
+<<<<<<< HEAD
+=======
+
+```css
+:root {
+  --primary: #4361ee;
+  --spacing-md: 1.5rem;
+  /* ... more variables */
+}
+```
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+This project is open source and available under the MIT License.
+>>>>>>> 85891fe (initial commit)

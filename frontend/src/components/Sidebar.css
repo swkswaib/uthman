@@ -1,0 +1,233 @@
+.sidebar {
+  width: 280px;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  position: sticky;
+  top: 64px;
+  overflow-y: auto;
+  transition: var(--transition);
+  z-index: 90;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 95;
+}
+
+.sidebar.mobile {
+  position: fixed;
+  top: 64px;
+  left: -280px;
+  height: calc(100vh - 64px);
+  z-index: 99;
+  box-shadow: var(--shadow-lg);
+}
+
+.sidebar.mobile.open {
+  left: 0;
+}
+
+.sidebar-header {
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-sm);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+}
+
+.close-sidebar:hover {
+  background-color: var(--border);
+}
+
+.sidebar-section {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.sidebar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-item {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: 500;
+}
+
+.sidebar-item:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.sidebar-item.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.sidebar-item.active i {
+  color: white;
+}
+
+.sidebar-item i {
+  width: 20px;
+  color: var(--text-light);
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xs);
+}
+
+.quick-action-btn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.quick-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.quick-action-btn.blue {
+  background-color: var(--blue-light);
+  color: var(--blue);
+}
+
+.quick-action-btn.green {
+  background-color: var(--green-light);
+  color: var(--green);
+}
+
+.quick-action-btn.purple {
+  background-color: var(--purple-light);
+  color: var(--purple);
+}
+
+.quick-action-btn.orange {
+  background-color: var(--orange-light);
+  color: var(--orange);
+}
+
+.recent-activities {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.activity-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+}
+
+.activity-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.activity-content p {
+  font-size: 0.875rem;
+  margin-bottom: 2px;
+}
+
+.activity-content small {
+  color: var(--text-light);
+  font-size: 0.75rem;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: var(--spacing-md);
+}
+
+.storage-info {
+  background-color: var(--bg);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.storage-bar {
+  height: 6px;
+  background-color: var(--border);
+  border-radius: 3px;
+  margin-bottom: var(--spacing-xs);
+  overflow: hidden;
+}
+
+.storage-fill {
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.storage-info p {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .sidebar:not(.mobile) {
+    display: none;
+  }
+}
