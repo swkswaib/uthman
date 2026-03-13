@@ -329,22 +329,24 @@
 
 /* ─── Pupil Info ─── */
 .rc-pupil-info {
-  margin-bottom: 0.75rem;
-  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0.75rem;
   background: #f9faf9;
   border: 1px solid #ddd;
   border-radius: 3px;
 }
 
 .rc-info-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 1rem;
 }
 
 .rc-info-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.3rem;
 }
 
 .rc-label {
@@ -352,10 +354,11 @@
   color: #777;
   text-transform: uppercase;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .rc-value {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #222;
 }
@@ -645,7 +648,7 @@
   }
 
   .rc-info-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 0.1rem 0.75rem;
   }
 
   .report-card {
