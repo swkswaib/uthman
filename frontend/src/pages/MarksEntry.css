@@ -1,0 +1,497 @@
+/* ════════════════════════════════════════════
+   MarksEntry Page Styles
+   ════════════════════════════════════════════ */
+
+.marks-entry {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.marks-entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.marks-entry-header h2 {
+  font-size: 1.5rem;
+  color: #1a5632;
+  margin: 0;
+}
+
+.marks-entry-header h2 i {
+  margin-right: 10px;
+  color: #2e7d4f;
+}
+
+/* Mode Toggle */
+.mode-toggle {
+  display: flex;
+  gap: 4px;
+  background: #e8f0eb;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.mode-btn {
+  padding: 8px 18px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #5a7d65;
+  transition: all 0.2s;
+}
+
+.mode-btn.active {
+  background: #1a5632;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(26, 86, 50, 0.3);
+}
+
+.mode-btn i {
+  margin-right: 6px;
+}
+
+/* Filters */
+.marks-filters {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8faf9;
+  border-radius: 10px;
+  border: 1px solid #d4e5da;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 160px;
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #5a7d65;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select {
+  padding: 8px 12px;
+  border: 1px solid #c5d8cc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.filter-group select:focus {
+  border-color: #1a5632;
+  box-shadow: 0 0 0 2px rgba(26, 86, 50, 0.15);
+}
+
+.filter-group select:disabled {
+  background: #eee;
+  cursor: not-allowed;
+}
+
+/* Stream Info */
+.stream-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stream-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.stream-badge.muslim {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.stream-badge.secular {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
+.subject-count {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Loading */
+.marks-loading {
+  text-align: center;
+  padding: 40px;
+  color: #1a5632;
+  font-size: 1rem;
+}
+
+.marks-loading i {
+  margin-right: 8px;
+}
+
+/* Pupil Selector */
+.pupil-selector {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pupil-selector label {
+  font-weight: 600;
+  color: #1a5632;
+  font-size: 0.9rem;
+}
+
+.pupil-selector select {
+  padding: 10px 14px;
+  border: 2px solid #1a5632;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  min-width: 300px;
+  background: #fff;
+  outline: none;
+}
+
+.pupil-selector select:focus {
+  box-shadow: 0 0 0 3px rgba(26, 86, 50, 0.2);
+}
+
+.no-data {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Pupil Info Bar */
+.pupil-info-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #1a5632, #2e7d4f);
+  color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+/* Class Mode Info */
+.class-mode-info {
+  padding: 10px 16px;
+  background: #f0f7f2;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  color: #1a5632;
+  font-weight: 500;
+  border-left: 4px solid #1a5632;
+}
+
+/* ──── Marks Tables ──── */
+.marks-table-section {
+  margin-bottom: 24px;
+}
+
+.marks-table-section h3 {
+  font-size: 1.05rem;
+  color: #1a5632;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #d4e5da;
+}
+
+.marks-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #d4e5da;
+}
+
+.marks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.marks-table thead {
+  background: #f0f7f2;
+}
+
+.marks-table th {
+  padding: 10px 8px;
+  text-align: center;
+  font-weight: 600;
+  color: #1a5632;
+  border-bottom: 2px solid #c5d8cc;
+  white-space: nowrap;
+}
+
+.marks-table th.col-subject,
+.marks-table th.col-name {
+  text-align: left;
+}
+
+.marks-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #e8f0eb;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.marks-table td.col-subject,
+.marks-table td.col-name {
+  text-align: left;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #333;
+}
+
+.marks-table td.col-calc {
+  font-weight: 600;
+  color: #555;
+}
+
+.marks-table td.col-grade {
+  font-weight: 700;
+  color: #1a5632;
+}
+
+.marks-table td.col-remarks {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Input fields */
+.marks-table input[type="number"] {
+  width: 60px;
+  padding: 6px 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+}
+
+.marks-table input[type="number"]::-webkit-outer-spin-button,
+.marks-table input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.marks-table input[type="number"]:focus {
+  border-color: #1a5632;
+  box-shadow: 0 0 0 2px rgba(26, 86, 50, 0.2);
+}
+
+/* Compact table (class mode) */
+.marks-table.compact input[type="number"] {
+  width: 52px;
+  padding: 4px 2px;
+}
+
+/* Islamic Table styles */
+.islamic-section h3,
+.islamic-section h4 {
+  color: #1a5632;
+}
+
+.islamic-table th.col-subject,
+.islamic-table th.col-name,
+.islamic-table td.col-subject,
+.islamic-table td.col-name {
+  text-align: right;
+}
+
+/* Class Subject Table */
+.class-subject-table {
+  margin-bottom: 24px;
+}
+
+.class-subject-table h4 {
+  font-size: 0.95rem;
+  color: #1a5632;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: #f0f7f2;
+  border-radius: 6px;
+  border-left: 4px solid #2e7d4f;
+}
+
+.class-subject-table.islamic-section h4 {
+  border-left: none;
+  border-right: 4px solid #2e7d4f;
+}
+
+/* ──── Actions ──── */
+.marks-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  flex-wrap: wrap;
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #e8f0eb;
+  margin-top: 8px;
+}
+
+.save-btn {
+  padding: 12px 28px;
+  background: #1a5632;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #145028;
+  transform: translateY(-1px);
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.save-btn.save-all {
+  background: #2e7d4f;
+}
+
+.save-btn.save-all:hover:not(:disabled) {
+  background: #256b42;
+}
+
+/* Save Status */
+.save-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.save-status.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.save-status.error {
+  background: #fde8e8;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.save-status i {
+  font-size: 1rem;
+}
+
+/* Empty State */
+.marks-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #aaa;
+}
+
+.marks-empty i {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
+  color: #c5d8cc;
+}
+
+.marks-empty p {
+  font-size: 1rem;
+}
+
+/* ──── Responsive ──── */
+@media (max-width: 768px) {
+  .marks-entry {
+    padding: 16px;
+  }
+
+  .marks-entry-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .marks-filters {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    min-width: 100%;
+  }
+
+  .pupil-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pupil-selector select {
+    min-width: 100%;
+  }
+
+  .pupil-info-bar {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .marks-table input[type="number"] {
+    width: 48px;
+  }
+
+  .marks-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .save-btn {
+    justify-content: center;
+  }
+}
+
+/* Hover rows */
+.marks-table tbody tr:hover {
+  background: #f5faf7;
+}
+
+.marks-table.compact tbody tr:hover {
+  background: #f0f7f2;
+}

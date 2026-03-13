@@ -1,0 +1,663 @@
+/* ═══════════════════════════════════════════════════════════ */
+/*  REPORT CARDS PAGE - Uthman Primary School                 */
+/* ═══════════════════════════════════════════════════════════ */
+
+.report-cards-page {
+  padding: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Control Panel ─── */
+.report-controls {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.report-controls h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-md);
+  background: var(--bg);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  width: fit-content;
+}
+
+.mode-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--text-light);
+  transition: var(--transition);
+}
+
+.mode-btn.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-row {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+.filter-group.full-width {
+  flex: 1 1 100%;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  background: white;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(27, 138, 90, 0.12);
+}
+
+.action-row {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.btn-generate, .btn-pdf, .btn-print {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.btn-generate {
+  background: var(--primary);
+  color: white;
+}
+.btn-generate:hover { background: var(--secondary); transform: translateY(-1px); }
+.btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn-pdf {
+  background: #e74c3c;
+  color: white;
+}
+.btn-pdf:hover { background: #c0392b; transform: translateY(-1px); }
+
+.btn-print {
+  background: var(--blue);
+  color: white;
+}
+.btn-print:hover { background: #2980b9; transform: translateY(-1px); }
+
+.error-message {
+  margin-top: var(--spacing-sm);
+  padding: 0.75rem 1rem;
+  background: var(--red-light);
+  color: var(--red);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.stream-info {
+  margin-top: var(--spacing-sm);
+}
+
+.stream-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.stream-badge.muslim {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.stream-badge.non-muslim {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
+.stream-badge.combined {
+  background: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffcc02;
+}
+
+/* ─── Empty State ─── */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.empty-state i {
+  font-size: 4rem;
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--text-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+.grade-scale-reference {
+  background: var(--bg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.grade-scale-reference h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.grade-scale-reference table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.grade-scale-reference th,
+.grade-scale-reference td {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.grade-scale-reference th {
+  background: var(--primary);
+  color: white;
+}
+
+.grade-scale-reference .remarks {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  REPORT CARD TEMPLATE STYLES                               */
+/* ═══════════════════════════════════════════════════════════ */
+
+.report-display {
+  margin-top: var(--spacing-lg);
+}
+
+.report-card-page {
+  margin-bottom: 2rem;
+}
+
+.report-card {
+  background: white;
+  border: 2px solid #333;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Times New Roman', Georgia, serif;
+  color: #222;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* ─── Header ─── */
+.rc-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px double #1b8a5a;
+  margin-bottom: 0.5rem;
+}
+
+.islamic-header {
+  border-bottom-color: #1a6b37;
+}
+
+.rc-logo i {
+  font-size: 2.5rem;
+  color: #1b8a5a;
+}
+
+.islamic-header .rc-logo i {
+  color: #1a6b37;
+}
+
+.rc-school-info {
+  text-align: center;
+}
+
+.rc-school-info h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1b8a5a;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rc-motto {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+  margin: 2px 0;
+}
+
+.rc-address {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.rc-title-bar {
+  background: #1b8a5a;
+  color: white;
+  text-align: center;
+  padding: 0.4rem;
+  margin-bottom: 0.75rem;
+  border-radius: 2px;
+}
+
+.rc-title-bar.islamic-title {
+  background: #1a6b37;
+}
+
+.rc-title-bar h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Pupil Info ─── */
+.rc-pupil-info {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: #f9faf9;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.rc-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.rc-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.rc-label {
+  font-size: 0.7rem;
+  color: #777;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.rc-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.rc-value.highlight {
+  color: #1b8a5a;
+  font-weight: 700;
+}
+
+/* ─── Islamic Report RTL Pupil Info ─── */
+.islamic-report .rc-pupil-info {
+  direction: rtl;
+}
+
+.islamic-report .rc-info-item {
+  flex-direction: row;
+  text-align: right;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+
+.islamic-report .rc-label {
+  text-transform: none;
+  font-size: 0.85rem;
+}
+
+
+/* ─── Tables ─── */
+.rc-section {
+  margin-bottom: 0.75rem;
+}
+
+.rc-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1b8a5a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid #1b8a5a;
+  padding-bottom: 0.2rem;
+}
+
+.islamic-section-title {
+  color: #1a6b37;
+  border-color: #1a6b37;
+}
+
+.rc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.rc-table th {
+  background: #1b8a5a;
+  color: white;
+  padding: 0.4rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.islamic-table th {
+  background: #1a6b37;
+}
+
+.islamic-report .rc-table {
+  direction: rtl;
+}
+
+.islamic-report .rc-table .subject-col {
+  text-align: right;
+}
+
+.rc-table td {
+  padding: 0.35rem 0.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.rc-table .subject-col {
+  text-align: left;
+  font-weight: 500;
+  min-width: 140px;
+}
+
+.rc-table .bold {
+  font-weight: 700;
+}
+
+.rc-table .no-data {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 1rem;
+}
+
+.rc-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.rc-table .summary-row {
+  background: #f0f7f0 !important;
+  font-weight: 600;
+}
+
+.rc-table .summary-row .highlight {
+  color: #1b8a5a;
+  font-size: 0.95rem;
+}
+
+.grade-cell {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.grade-cell.grade-d { background: #e8f5e9; color: #2e7d32; }
+.grade-cell.grade-c { background: #e3f2fd; color: #1565c0; }
+.grade-cell.grade-p { background: #fff3e0; color: #e65100; }
+.grade-cell.grade-f { background: #fce4ec; color: #c62828; }
+
+.remarks-cell {
+  font-size: 0.75rem;
+  color: #555;
+  text-align: left !important;
+}
+
+/* ─── Summary Bar ─── */
+.rc-summary-bar {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: #f0f7f0;
+  border: 1px solid #b2dfdb;
+  border-radius: 3px;
+}
+
+.rc-summary-item {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.rc-summary-item strong {
+  color: #1b8a5a;
+}
+
+/* ─── Comments ─── */
+.rc-comments {
+  margin-bottom: 0.75rem;
+}
+
+.rc-comment-box {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+}
+
+.islamic-report .rc-comment-box {
+  direction: rtl;
+  text-align: right;
+  border: none;
+}
+
+.rc-comment-box label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1b8a5a;
+  margin-bottom: 0.25rem;
+}
+
+.rc-comment-box p {
+  font-size: 0.85rem;
+  color: #333;
+  font-style: italic;
+  min-height: 1.2em;
+}
+
+.rc-signature {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.3rem;
+}
+
+/* ─── Grading Scale (on card) ─── */
+.rc-grading-scale {
+  margin-bottom: 0.5rem;
+}
+
+.rc-grading-scale h4 {
+  font-size: 0.75rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+.rc-grading-scale table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.rc-grading-scale th,
+.rc-grading-scale td {
+  padding: 0.2rem 0.3rem;
+  border: 1px solid #ccc;
+}
+
+.rc-grading-scale th {
+  background: #f5f5f5;
+  font-weight: 700;
+  color: #1b8a5a;
+}
+
+/* ─── Footer ─── */
+.rc-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #777;
+  border-top: 1px solid #ddd;
+  padding-top: 0.4rem;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  PRINT STYLES                                               */
+/* ═══════════════════════════════════════════════════════════ */
+
+@media print {
+  .no-print,
+  .navbar,
+  .sidebar,
+  .sidebar-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .report-cards-page {
+    padding: 0;
+    max-width: none;
+  }
+
+  .report-card {
+    box-shadow: none;
+    page-break-after: always;
+    border: 1px solid #333;
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .report-card:last-child {
+    page-break-after: auto;
+  }
+
+  .report-card-page {
+    page-break-after: always;
+  }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .report-cards-page {
+    padding: var(--spacing-sm);
+  }
+
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    min-width: 100%;
+  }
+
+  .rc-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .report-card {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .rc-table {
+    font-size: 0.7rem;
+  }
+
+  .rc-school-info h1 {
+    font-size: 1.2rem;
+  }
+}
