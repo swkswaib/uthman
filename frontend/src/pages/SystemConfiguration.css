@@ -115,14 +115,62 @@
 
 @media (max-width: 768px) {
   .system-config-page {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
   }
 
   .system-config-card {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+  }
+
+  .system-config-card h2 {
+    font-size: 1.1rem;
   }
 
   .system-config-form .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Prevent iOS auto-zoom on input focus */
+  .form-group input {
+    font-size: 1rem;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .btn-save {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .system-config-page {
+    padding: var(--spacing-xs);
+  }
+
+  .system-config-card {
+    padding: 0.875rem;
+  }
+
+  .system-config-intro {
+    font-size: 0.85rem;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+  }
+
+  .form-group input {
+    padding: 0.75rem 0.75rem;
+    font-size: 1rem;
+  }
+
+  .config-alert {
+    font-size: 0.85rem;
   }
 }
