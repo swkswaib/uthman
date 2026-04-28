@@ -51,11 +51,11 @@ const updateSystemConfiguration = async (req, res) => {
       return res.status(400).json({ message: 'School name is required' });
     }
 
-    const config = await SystemConfig.findOneAndUpdate(
-      { _id: 'default' },
-      { $set: updates, $setOnInsert: { ...DEFAULT_SYSTEM_CONFIG } },
-      { new: true, upsert: true, runValidators: true }
-    );
+    const config = await getOrCreateConfig();
+
+    Object.assign(config, updates);
+
+    await config.save();
 
     res.json(config);
   } catch (error) {
