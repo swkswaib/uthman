@@ -4,8 +4,20 @@ import { GRADE_SCALE } from '../utils/schoolConfig';
 const ReportCardTemplate = ({ report }) => {
   if (!report || !report.pupil) return null;
 
-  const { pupil, academicInfo, secularSubjects, islamicSubjects, summary, hasTheologyReport, comments } = report;
+  const { pupil, academicInfo, secularSubjects, islamicSubjects, summary, hasTheologyReport, comments, schoolConfig } = report;
   const currentDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  const config = {
+    schoolName: schoolConfig?.schoolName || 'UTHMAN PRIMARY SCHOOL',
+    motto: schoolConfig?.motto || '"Excellence in Education"',
+    address: schoolConfig?.address || 'P.O. Box XXXX | Tel: +256 XXX XXX XXX',
+    logoUrl: schoolConfig?.logoUrl || '',
+    reportTitle: schoolConfig?.reportTitle || 'END OF TERM REPORT CARD',
+    islamicHeaderArabic: schoolConfig?.islamicHeaderArabic || 'بسم الله الرحمن الرحيم',
+    islamicSchoolName: schoolConfig?.islamicSchoolName || 'UTHMAN MIXED PRIMARY SCHOOL',
+    islamicReportTitle: schoolConfig?.islamicReportTitle || 'END OF TERM ONE ACADEMIC REPORT CARD',
+    islamicAddress: schoolConfig?.islamicAddress || 'P.O BOX 477 MASINDI Tel: 0778600597, 0703465464',
+    islamicSectionTitle: schoolConfig?.islamicSectionTitle || 'قسم السفلي'
+  };
 
   return (
     <div className="report-card-page">
@@ -14,21 +26,21 @@ const ReportCardTemplate = ({ report }) => {
         {/* School Header */}
         <div className="rc-header">
           <div className="rc-logo">
-            <i className="fas fa-school"></i>
+            {config.logoUrl ? <img src={config.logoUrl} alt="School logo" /> : <i className="fas fa-school"></i>}
           </div>
           <div className="rc-school-info">
-            <h1>UTHMAN PRIMARY SCHOOL</h1>
-            <p className="rc-motto">"Excellence in Education"</p>
-            <p className="rc-address">P.O. Box XXXX | Tel: +256 XXX XXX XXX</p>
+            <h1>{config.schoolName}</h1>
+            <p className="rc-motto">{config.motto}</p>
+            <p className="rc-address">{config.address}</p>
           </div>
           <div className="rc-logo">
-            <i className="fas fa-book-open"></i>
+            {config.logoUrl ? <img src={config.logoUrl} alt="School logo" /> : <i className="fas fa-book-open"></i>}
           </div>
         </div>
 
         <div className="rc-title-bar">
           <h2>
-            {pupil.section === 'nursery' ? 'NURSERY' : 'PRIMARY'} SECTION — END OF TERM REPORT CARD
+            {pupil.section === 'nursery' ? 'NURSERY' : 'PRIMARY'} SECTION — {config.reportTitle}
           </h2>
         </div>
 
@@ -171,20 +183,20 @@ const ReportCardTemplate = ({ report }) => {
           {/* School Header */}
           <div className="rc-header islamic-header">
             <div className="rc-logo">
-              <i className="fas fa-mosque"></i>
+              {config.logoUrl ? <img src={config.logoUrl} alt="School logo" /> : <i className="fas fa-mosque"></i>}
             </div>
             <div className="rc-school-info">
-                <h1>بسم الله الرحمن الرحيم</h1>
-              <h1>UTHMAN MIXED PRIMARY SCHOOL</h1>
-              <h3>END OF TERM ONE ACADEMIC REPORT CARD</h3>
-              <p className="rc-motto">P.O BOX 477 MASINDI Tel: 0778600597, 0703465464</p>
+              <h1>{config.islamicHeaderArabic}</h1>
+              <h1>{config.islamicSchoolName}</h1>
+              <h3>{config.islamicReportTitle}</h3>
+              <p className="rc-motto">{config.islamicAddress}</p>
               
             </div>
            
           </div>
 
           <div className="rc-title-bar islamic-title">
-            <h2>قسم السفلي</h2>
+            <h2>{config.islamicSectionTitle}</h2>
           </div>
 
           {/* Pupil Info (brief) */}

@@ -45,5 +45,15 @@ export const api = {
   getStatistics: (params = {}) => {
     const query = new URLSearchParams(params).toString();
     return fetch(`${API_BASE}/reports/statistics?${query}`).then(r => r.json());
-  }
+  },
+
+  // System Configuration
+  getSystemConfig: () =>
+    fetch(`${API_BASE}/system-config`).then(r => r.json()),
+  updateSystemConfig: (data) =>
+    fetch(`${API_BASE}/system-config`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(r => r.json())
 };

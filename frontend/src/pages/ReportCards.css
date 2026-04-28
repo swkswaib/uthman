@@ -280,6 +280,12 @@
   color: #1b8a5a;
 }
 
+.rc-logo img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
 .islamic-header .rc-logo i {
   color: #1a6b37;
 }

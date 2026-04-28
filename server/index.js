@@ -6,6 +6,7 @@ require('dotenv').config();
 const pupilRoutes = require('./routes/pupilRoutes');
 const markRoutes = require('./routes/markRoutes');
 const reportRoutes = require('./routes/reportRoutes');
+const systemConfigRoutes = require('./routes/systemConfigRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use('/api/pupils', pupilRoutes);
 app.use('/api/marks', markRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/system-config', systemConfigRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

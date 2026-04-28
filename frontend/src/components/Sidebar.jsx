@@ -4,7 +4,7 @@ import './Sidebar.css';
 
 const Sidebar = ({ isMobile, isOpen, closeSidebar, activePage, onPageChange }) => {
 
-  const visibleIds = ['dashboard', 'students', 'marks', 'grades'];
+  const visibleIds = ['dashboard', 'students', 'marks', 'grades', 'system-config'];
 
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-tachometer-alt' },
@@ -16,6 +16,7 @@ const Sidebar = ({ isMobile, isOpen, closeSidebar, activePage, onPageChange }) =
     { id: 'grades', label: 'Grades & Results', icon: 'fas fa-poll' },
     { id: 'timetable', label: 'Timetable', icon: 'fas fa-calendar-week' },
     { id: 'library', label: 'Library', icon: 'fas fa-book-open' },
+    { id: 'system-config', label: 'System Configuration', icon: 'fas fa-cogs' },
     { id: 'settings', label: 'Settings', icon: 'fas fa-cog' },
   ].filter(item => visibleIds.includes(item.id));
 

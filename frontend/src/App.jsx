@@ -5,6 +5,7 @@ import ContentSection from './components/ContentSection';
 import ReportCards from './pages/ReportCards';
 import MarksEntry from './pages/MarksEntry';
 import RegisterStudent from './pages/RegisterStudent';
+import SystemConfiguration from './pages/SystemConfiguration';
 import './App.css';
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
         return <MarksEntry />;
       case 'students':
         return <RegisterStudent />;
+      case 'system-config':
+        return <SystemConfiguration />;
       default:
         return <ContentSection isMobile={isMobile} sidebarOpen={sidebarOpen} />;
     }

@@ -2,12 +2,27 @@ const Pupil = require('../models/pupilModel');
 const Mark = require('../models/markModel');
 const { getSubjectsForStream, getStreamType, getSection, needsTheologyReport } = require('../config/schoolConfig');
 const { calculateGrade, calculateDivision, generateClassTeacherComment, generateHeadTeacherComment, getArabicRemarks, generateIslamicClassComment, generateIslamicSupervisorComment, generateIslamicHeadComment } = require('../utils/gradeCalculator');
+const { getOrCreateConfig } = require('./systemConfigController');
+const { DEFAULT_SYSTEM_CONFIG } = require('../config/defaultSystemConfig');
+
+const loadSystemConfig = async () => {
+  try {
+    const configDoc = await getOrCreateConfig();
+    return {
+      ...DEFAULT_SYSTEM_CONFIG,
+      ...configDoc.toObject()
+    };
+  } catch {
+    return { ...DEFAULT_SYSTEM_CONFIG };
+  }
+};
 
 // Generate report for a single pupil
 const generatePupilReport = async (req, res) => {
   try {
     const { pupilId } = req.params;
     const { term = 'Term 1', academicYear = '2025/2026' } = req.query;
+    const schoolConfig = await loadSystemConfig();
 
     const pupil = await Pupil.findById(pupilId);
     if (!pupil) {
@@ -71,6 +86,7 @@ const generatePupilReport = async (req, res) => {
     const overallGrade = calculateGrade(secularAverage);
 
     const report = {
+      schoolConfig,
       pupil: {
         _id: pupil._id,
         name: pupil.name,
@@ -142,6 +158,7 @@ const generatePupilReport = async (req, res) => {
 const generateClassReports = async (req, res) => {
   try {
     const { class: className, stream, term = 'Term 1', academicYear = '2025/2026' } = req.query;
+    const schoolConfig = await loadSystemConfig();
 
     if (!className) {
       return res.status(400).json({ message: 'Class is required' });
@@ -203,6 +220,7 @@ const generateClassReports = async (req, res) => {
       const overallGrade = calculateGrade(secularAverage);
 
       return {
+        schoolConfig,
         pupil: {
           _id: pupil._id,
           name: pupil.name,
