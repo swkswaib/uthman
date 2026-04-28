@@ -3,7 +3,7 @@ import { api } from '../utils/api';
 import { getAllClasses, getStreamsForClass } from '../utils/schoolConfig';
 import './ContentSection.css';
 
-const ContentSection = ({ isMobile, sidebarOpen }) => {
+const ContentSection = ({ isMobile, sidebarOpen, schoolName = 'Uthman Primary School' }) => {
   const [stats, setStats] = useState({ totalPupils: 0, totalMarks: 0, classesWithData: 0, streamsWithData: 0 });
   const [classStats, setClassStats] = useState([]);
   const [recentPupils, setRecentPupils] = useState([]);
@@ -70,7 +70,7 @@ const ContentSection = ({ isMobile, sidebarOpen }) => {
       {/* Welcome Header */}
       <div className="content-header">
         <div>
-          <h1>Welcome to Uthman Primary School</h1>
+          <h1>Welcome to {schoolName}</h1>
           <p>Overview of registered pupils, marks entry, and results.</p>
         </div>
         <button className="new-project-btn" onClick={loadDashboardData} disabled={loading}>

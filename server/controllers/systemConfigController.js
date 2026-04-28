@@ -51,6 +51,9 @@ const updateSystemConfiguration = async (req, res) => {
       return res.status(400).json({ message: 'School name is required' });
     }
 
+    // Mark as configured whenever the user saves
+    updates.isConfigured = true;
+
     const config = await getOrCreateConfig();
 
     Object.assign(config, updates);

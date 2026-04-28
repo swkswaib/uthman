@@ -24,6 +24,37 @@
   margin-bottom: var(--spacing-md);
 }
 
+.setup-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--primary-light);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.setup-banner-icon {
+  font-size: 2rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.setup-banner strong {
+  display: block;
+  color: var(--primary);
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.setup-banner p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 .system-config-form .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

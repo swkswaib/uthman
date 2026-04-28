@@ -6,12 +6,15 @@ import ReportCards from './pages/ReportCards';
 import MarksEntry from './pages/MarksEntry';
 import RegisterStudent from './pages/RegisterStudent';
 import SystemConfiguration from './pages/SystemConfiguration';
+import { api } from './utils/api';
 import './App.css';
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activePage, setActivePage] = useState('dashboard');
+  const [systemConfig, setSystemConfig] = useState(null);
+  const [configLoading, setConfigLoading] = useState(true);
 
   // Detect screen size
   useEffect(() => {
@@ -28,6 +31,18 @@ function App() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
+  // Load system config on startup
+  useEffect(() => {
+    api.getSystemConfig()
+      .then(data => { if (data && !data.message) setSystemConfig(data); })
+      .catch(() => {})
+      .finally(() => setConfigLoading(false));
+  }, []);
+
+  const handleConfigSaved = (config) => {
+    setSystemConfig(config);
+  };
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -38,6 +53,8 @@ function App() {
     }
   };
 
+  const isConfigured = systemConfig?.isConfigured === true;
+
   const renderPage = () => {
     switch (activePage) {
       case 'grades':
@@ -47,9 +64,20 @@ function App() {
       case 'students':
         return <RegisterStudent />;
       case 'system-config':
-        return <SystemConfiguration />;
+        return <SystemConfiguration onConfigSaved={handleConfigSaved} />;
       default:
-        return <ContentSection isMobile={isMobile} sidebarOpen={sidebarOpen} />;
+        if (configLoading) {
+          return (
+            <div className="config-loading">
+              <i className="fas fa-spinner fa-spin"></i>
+              <p>Loading...</p>
+            </div>
+          );
+        }
+        if (!isConfigured) {
+          return <SystemConfiguration onConfigSaved={handleConfigSaved} isSetupMode />;
+        }
+        return <ContentSection isMobile={isMobile} sidebarOpen={sidebarOpen} schoolName={systemConfig?.schoolName} />;
     }
   };
 
@@ -59,6 +87,7 @@ function App() {
         isMobile={isMobile} 
         toggleSidebar={toggleSidebar} 
         sidebarOpen={sidebarOpen}
+        schoolName={systemConfig?.schoolName}
       />
       
       <div className="main-container">

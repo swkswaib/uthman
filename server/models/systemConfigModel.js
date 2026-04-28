@@ -54,6 +54,10 @@ const systemConfigSchema = new mongoose.Schema({
     type: String,
     trim: true,
     default: ''
+  },
+  isConfigured: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true,

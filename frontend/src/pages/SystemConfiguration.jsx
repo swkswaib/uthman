@@ -15,7 +15,7 @@ const emptyForm = {
   islamicSectionTitle: ''
 };
 
-const SystemConfiguration = () => {
+const SystemConfiguration = ({ onConfigSaved, isSetupMode = false }) => {
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -56,6 +56,7 @@ const SystemConfiguration = () => {
       } else {
         setForm({ ...emptyForm, ...response });
         setMessage('System configuration saved successfully.');
+        if (onConfigSaved) onConfigSaved(response);
       }
     } catch {
       setError('Failed to save configuration.');
@@ -77,10 +78,20 @@ const SystemConfiguration = () => {
   return (
     <div className="system-config-page">
       <div className="system-config-card">
-        <h2><i className="fas fa-cogs"></i> System Configuration</h2>
-        <p className="system-config-intro">
-          Set the school details shown at the top of each report card before users start printing reports.
-        </p>
+        <h2><i className="fas fa-cogs"></i> {isSetupMode ? 'School Setup' : 'System Configuration'}</h2>
+        {isSetupMode ? (
+          <div className="setup-banner">
+            <div className="setup-banner-icon"><i className="fas fa-school"></i></div>
+            <div>
+              <strong>Welcome! Let's set up your school.</strong>
+              <p>Enter your school details below. The dashboard and all reports will use this information. You can update it anytime from the System Configuration menu.</p>
+            </div>
+          </div>
+        ) : (
+          <p className="system-config-intro">
+            Set the school details shown at the top of each report card before users start printing reports.
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="system-config-form">
           <div className="form-grid">

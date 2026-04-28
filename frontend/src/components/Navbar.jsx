@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 
-const Navbar = ({ isMobile, toggleSidebar, sidebarOpen }) => {
+const Navbar = ({ isMobile, toggleSidebar, sidebarOpen, schoolName }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showMobileSearch, setShowMobileSearch] = useState(false);
 
@@ -29,7 +29,7 @@ const Navbar = ({ isMobile, toggleSidebar, sidebarOpen }) => {
           
           <div className="logo">
             <i className="fas fa-school"></i>
-            <span>Uthman Primary School</span>
+            <span>{schoolName || 'School Management'}</span>
           </div>
         </div>
 
