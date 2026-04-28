@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { api } from '../utils/api';
 import './SystemConfiguration.css';
 
@@ -21,6 +21,27 @@ const SystemConfiguration = ({ onConfigSaved, isSetupMode = false }) => {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [logoTab, setLogoTab] = useState('upload'); // 'upload' | 'url'
+  const fileInputRef = useRef(null);
+
+  const handleLogoFile = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      setError('Logo image must be smaller than 2 MB.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      setForm(prev => ({ ...prev, logoUrl: ev.target.result }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const clearLogo = () => {
+    setForm(prev => ({ ...prev, logoUrl: '' }));
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
 
   useEffect(() => {
     const loadConfig = async () => {
@@ -129,14 +150,55 @@ const SystemConfiguration = ({ onConfigSaved, isSetupMode = false }) => {
             </div>
 
             <div className="form-group full-width">
-              <label htmlFor="logoUrl">School Logo URL (or Base64 data URL)</label>
-              <input
-                id="logoUrl"
-                name="logoUrl"
-                value={form.logoUrl}
-                onChange={handleChange}
-                placeholder="https://example.com/logo.png"
-              />
+              <label>School Logo</label>
+              <div className="logo-tabs">
+                <button type="button" className={`logo-tab ${logoTab === 'upload' ? 'active' : ''}`} onClick={() => setLogoTab('upload')}>
+                  <i className="fas fa-upload"></i> Upload File
+                </button>
+                <button type="button" className={`logo-tab ${logoTab === 'url' ? 'active' : ''}`} onClick={() => setLogoTab('url')}>
+                  <i className="fas fa-link"></i> Paste URL
+                </button>
+              </div>
+
+              {logoTab === 'upload' ? (
+                <div className="logo-upload-area" onClick={() => fileInputRef.current?.click()}>
+                  {form.logoUrl && (form.logoUrl.startsWith('data:') || logoTab === 'upload') && form.logoUrl ? (
+                    <div className="logo-preview-wrap">
+                      <img src={form.logoUrl} alt="Logo preview" className="logo-preview-img" />
+                      <button type="button" className="logo-clear-btn" onClick={(e) => { e.stopPropagation(); clearLogo(); }}>
+                        <i className="fas fa-times"></i> Remove
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="logo-upload-placeholder">
+                      <i className="fas fa-image"></i>
+                      <span>Click to choose an image</span>
+                      <small>PNG, JPG, SVG · max 2 MB</small>
+                    </div>
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={handleLogoFile}
+                  />
+                </div>
+              ) : (
+                <input
+                  id="logoUrl"
+                  name="logoUrl"
+                  value={form.logoUrl}
+                  onChange={handleChange}
+                  placeholder="https://example.com/logo.png"
+                />
+              )}
+
+              {form.logoUrl && logoTab === 'url' && (
+                <div className="logo-preview-wrap url-preview">
+                  <img src={form.logoUrl} alt="Logo preview" className="logo-preview-img" onError={(e) => e.target.style.display='none'} />
+                </div>
+              )}
             </div>
 
             <div className="form-group full-width">

@@ -67,11 +67,15 @@ body {
   display: flex;
   flex: 1;
   position: relative;
+  min-height: 0; /* required for nested flex + overflow-y to work */
+  overflow: hidden;
 }
 
 .content-area {
   flex: 1;
   overflow-y: auto;
+  min-height: 0; /* allows flex child to shrink so overflow-y:auto creates a real scroll container */
+  width: 100%;
 }
 
 .config-loading {
